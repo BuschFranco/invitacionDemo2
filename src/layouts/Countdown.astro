@@ -1,7 +1,7 @@
 <section class="section countdown-section">
 	
 	<div class="container">
-		<h2 class="section-title animate-on-scroll">Nos casamos en...</h2>
+		<h2 class="section-title animate-on-scroll">Mi celebración es en...</h2>
 		<div id="countdown" class="countdown-container animate-fade-in">
 			<div class="countdown-item">
 				<span id="days" class="countdown-number">00</span>
@@ -26,9 +26,10 @@
 <style>
 	.countdown-section {
 		background-color: var(--color-primary);
-		color: white;
+		color: var(--color-text-dark);
 		text-align: center;
 		padding: var(--spacing-xl) 0;
+		background-color: #FEFE95;
 	}
 
 	.countdown-container {
@@ -97,8 +98,8 @@
 <script>
 	// Función para calcular y actualizar la cuenta regresiva
 	function updateCountdown() {
-		// Fecha del evento (6 de septiembre de 2025)
-		const eventDate = new Date('September 6, 2025 13:00:00').getTime();
+		// Fecha del evento (15 de marzo de 2026)
+		const eventDate = new Date('March 15, 2026 16:00:00').getTime();
 		// Fecha actual
 		const now = new Date().getTime();
 		// Diferencia de tiempo

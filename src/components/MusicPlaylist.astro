@@ -1,0 +1,368 @@
+---
+// MusicPlaylist.astro
+---
+
+<section class="music-section">
+    <div class="container">
+        <h2 class="section-title animate-on-scroll">🎵 Playlist de la Fiesta</h2>
+        <p class="music-description animate-fade-in">¡Ayúdame a crear la playlist perfecta para mi celebración! Sugiere tus canciones favoritas.</p>
+        
+        <div class="music-content">
+            <div class="current-playlist animate-slide-left">
+                <h3>🎶 Canciones Confirmadas</h3>
+                <div class="playlist-container">
+                    <div class="song-item">
+                        <div class="song-icon">🎤</div>
+                        <div class="song-info">
+                            <span class="song-title">Quinceañera</span>
+                            <span class="song-artist">Thalía</span>
+                        </div>
+                        <div class="song-genre">Pop Latino</div>
+                    </div>
+                    
+                    <div class="song-item">
+                        <div class="song-icon">💃</div>
+                        <div class="song-info">
+                            <span class="song-title">Tiempo de Vals</span>
+                            <span class="song-artist">Chayanne</span>
+                        </div>
+                        <div class="song-genre">Vals</div>
+                    </div>
+                    
+                    <div class="song-item">
+                        <div class="song-icon">🎵</div>
+                        <div class="song-info">
+                            <span class="song-title">Despacito</span>
+                            <span class="song-artist">Luis Fonsi</span>
+                        </div>
+                        <div class="song-genre">Reggaeton</div>
+                    </div>
+                    
+                    <div class="song-item">
+                        <div class="song-icon">✨</div>
+                        <div class="song-info">
+                            <span class="song-title">Havana</span>
+                            <span class="song-artist">Camila Cabello</span>
+                        </div>
+                        <div class="song-genre">Pop</div>
+                    </div>
+                    
+                    <div class="song-item">
+                        <div class="song-icon">🌟</div>
+                        <div class="song-info">
+                            <span class="song-title">Con Altura</span>
+                            <span class="song-artist">Rosalía & J Balvin</span>
+                        </div>
+                        <div class="song-genre">Urban</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="suggest-song animate-slide-right">
+                <h3>🎼 Sugiere una Canción</h3>
+                <form class="song-form" id="song-form">
+                    <div class="form-group">
+                        <label for="song-title">Título de la Canción</label>
+                        <input type="text" id="song-title" name="song-title" placeholder="Ej: Shape of You" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="song-artist">Artista</label>
+                        <input type="text" id="song-artist" name="song-artist" placeholder="Ej: Ed Sheeran" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="song-genre">Género Musical</label>
+                        <select id="song-genre" name="song-genre" required>
+                            <option value="">Selecciona un género</option>
+                            <option value="Pop">Pop</option>
+                            <option value="Reggaeton">Reggaeton</option>
+                            <option value="Rock">Rock</option>
+                            <option value="Salsa">Salsa</option>
+                            <option value="Bachata">Bachata</option>
+                            <option value="Merengue">Merengue</option>
+                            <option value="Cumbia">Cumbia</option>
+                            <option value="Vals">Vals</option>
+                            <option value="Electrónica">Electrónica</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="your-name">Tu Nombre</label>
+                        <input type="text" id="your-name" name="your-name" placeholder="Para saber quién sugirió la canción" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <span>🎵 Agregar a la Playlist</span>
+                    </button>
+                </form>
+                
+                <div class="suggestion-success" id="suggestion-success" style="display: none;">
+                    <div class="success-icon">🎉</div>
+                    <p>¡Gracias por tu sugerencia! La revisaré para incluirla en la playlist.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="music-stats animate-fade-in">
+            <div class="stat-item">
+                <div class="stat-number">25+</div>
+                <div class="stat-label">Canciones</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Géneros</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4h</div>
+                <div class="stat-label">De Música</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const songForm = document.getElementById('song-form');
+        const successMessage = document.getElementById('suggestion-success');
+        
+        if (songForm) {
+            songForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simular envío de sugerencia
+                setTimeout(() => {
+                    songForm.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    
+                    // Volver a mostrar el formulario después de 3 segundos
+                    setTimeout(() => {
+                        songForm.style.display = 'block';
+                        successMessage.style.display = 'none';
+                        songForm.reset();
+                    }, 3000);
+                }, 500);
+            });
+        }
+    });
+</script>
+
+<style>
+    .music-section {
+        padding: 2rem 0;
+        background: linear-gradient(135deg, 
+            rgba(138, 43, 226, 0.05) 0%, 
+            rgba(255, 20, 147, 0.05) 50%, 
+            rgba(255, 215, 0, 0.05) 100%);
+        position: relative;
+    }
+
+    .section-title{
+        margin: 0;
+    }
+
+    .music-description {
+        text-align: center;
+        font-size: var(--font-size-lg);
+        color: var(--color-text-medium);
+        margin-bottom: var(--spacing-2xl);
+        font-style: italic;
+    }
+
+    .music-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-2xl);
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .current-playlist h3,
+    .suggest-song h3 {
+        font-size: var(--font-size-xl);
+        color: var(--color-text-dark);
+        margin-bottom: var(--spacing-lg);
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .playlist-container {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: var(--border-radius-lg);
+        padding: var(--spacing-lg);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        border: 2px solid rgba(255, 182, 193, 0.3);
+        max-height: 400px;
+        overflow-y: auto;
+    }
+
+    .song-item {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+        border-radius: var(--border-radius-md);
+        margin-bottom: var(--spacing-sm);
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(255, 182, 193, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .song-item:hover {
+        transform: translateX(5px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        background: rgba(255, 255, 255, 0.9);
+    }
+
+    .song-icon {
+        font-size: 1.5rem;
+        width: 40px;
+        text-align: center;
+    }
+
+    .song-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .song-title {
+        font-weight: 600;
+        color: var(--color-text-dark);
+        font-size: var(--font-size-md);
+    }
+
+    .song-artist {
+        color: var(--color-text-medium);
+        font-size: var(--font-size-sm);
+    }
+
+    .song-genre {
+        background: var(--color-primary);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: var(--border-radius-sm);
+        font-size: var(--font-size-xs);
+        font-weight: 500;
+    }
+
+    .song-form {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: var(--border-radius-lg);
+        padding: var(--spacing-lg);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        border: 2px solid rgba(255, 182, 193, 0.3);
+    }
+
+    .form-group {
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: var(--spacing-xs);
+        font-weight: 600;
+        color: var(--color-text-dark);
+    }
+
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: var(--spacing-sm);
+        border: 2px solid rgba(255, 182, 193, 0.3);
+        border-radius: var(--border-radius-md);
+        font-size: var(--font-size-md);
+        transition: border-color 0.3s ease;
+        background: rgba(255, 255, 255, 0.9);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+        outline: none;
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(255, 182, 193, 0.2);
+    }
+
+    .btn {
+        width: 100%;
+        padding: var(--spacing-md);
+        background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+        color: white;
+        border: none;
+        border-radius: var(--border-radius-md);
+        font-size: var(--font-size-md);
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-xs);
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .suggestion-success {
+        text-align: center;
+        padding: var(--spacing-xl);
+        background: rgba(76, 175, 80, 0.1);
+        border-radius: var(--border-radius-lg);
+        border: 2px solid rgba(76, 175, 80, 0.3);
+    }
+
+    .success-icon {
+        font-size: 3rem;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .music-stats {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-2xl);
+        margin-top: 1.5rem;
+    }
+
+    .stat-item {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.9);
+        padding: var(--spacing-lg);
+        border-radius: var(--border-radius-lg);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border: 2px solid rgba(255, 182, 193, 0.3);
+        min-width: 120px;
+    }
+
+    .stat-number {
+        font-size: var(--font-size-2xl);
+        font-weight: 700;
+        color: var(--color-primary);
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .stat-label {
+        color: var(--color-text-medium);
+        font-size: var(--font-size-sm);
+        font-weight: 500;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .music-content {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .music-stats {
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+
+        .stat-item {
+            min-width: 200px;
+        }
+    }
+</style>

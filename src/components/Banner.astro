@@ -1,21 +1,52 @@
 ---
-// No necesitamos imports especiales para archivos en public
+// Banner.astro
 ---
 
-<div class="banner">
-    <!-- Video de fondo con fallback robusto -->
-    <video class="banner-video" autoplay muted loop playsinline preload="none" poster="/background.png" onloadstart="this.style.display='block'" onerror="this.style.display='none'">
-        <source src="./backgroundvideo.mp4" type="video/mp4">
-        <source src="/backgroundvideo.mp4" type="video/mp4">
-    </video>
-    <!-- Imagen de fallback como fondo CSS -->
-    <div class="banner-fallback"></div>
+<section class="banner">
+	<div class="banner-background">
+		<div class="animated-bg">
+			<div class="floating-element element-1">✨</div>
+			<div class="floating-element element-2">💖</div>
+			<div class="floating-element element-3">🌸</div>
+			<div class="floating-element element-4">✨</div>
+			<div class="floating-element element-5">💫</div>
+			<div class="floating-element element-6">🌟</div>
+		</div>
+	</div>
+	
     <div class="banner-overlay">
-        <h1 class="banner-title">Nuestra Boda</h1>
-        <h2 class="banner-names">Lucía & Martín</h2>
-        <p class="date banner-date">06 · 09 · 2025</p>
+        <div class="banner-content animate-fade-in">
+            <div class="crown-decoration">
+                <div class="crown">👑</div>
+            </div>
+            
+            <div class="name-container">
+                <h1 class="banner-title">Isabella</h1>
+            </div>
+            
+            <div class="celebration-text">
+                <p class="banner-subtitle">¡Celebra conmigo!</p>
+                <div class="age-highlight">
+                    <span class="age-number">15</span>
+                    <span class="age-text">años</span>
+                </div>
+            </div>
+            
+            <div class="banner-date-modern">
+                <div class="date-card">
+                    <span class="day">15</span>
+                    <span class="month">MAR</span>
+                    <span class="year">2026</span>
+                </div>
+            </div>
+            
+            <div class="banner-scroll-indicator">
+                <div class="scroll-arrow"></div>
+                <span>Descubre mi celebración</span>
+            </div>
+        </div>
     </div>
-</div>
+</section>
 
 <style>
     .banner {
@@ -30,44 +61,67 @@
         overflow: hidden;
     }
 
-    .banner-video {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        min-width: 100%;
-        min-height: 100%;
-        width: auto;
-        height: auto;
-        z-index: 1;
-        transform: translateX(-50%) translateY(-50%);
-        object-fit: cover;
-        display: none; /* Oculto por defecto, se muestra cuando carga */
-    }
-
-    .banner-fallback {
+    .banner-background {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: url('/background.png');
-        background-size: cover;
-        background-position: center;
+        background: linear-gradient(135deg, 
+            var(--color-primary) 0%, 
+            var(--color-secondary) 50%, 
+            var(--color-accent) 100%);
         z-index: 0;
     }
 
-    /* Mostrar video cuando carga correctamente */
-    .banner-video[style*="display: block"] {
+    .animated-bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .floating-element {
+        position: absolute;
+        font-size: 2rem;
+        opacity: 0.8;
+        pointer-events: none;
         z-index: 1;
     }
 
-    /* Asegurar que el fallback siempre esté visible */
-    .banner-fallback {
-        display: block !important;
+    .element-1 { 
+        top: 20%; left: 10%; 
+        animation: floatSoft 4s ease-in-out infinite;
+        animation-delay: 0s; 
+    }
+    .element-2 { 
+        top: 60%; left: 80%; 
+        animation: floatBounce 5s ease-in-out infinite;
+        animation-delay: 1s; 
+    }
+    .element-3 { 
+        top: 30%; left: 70%; 
+        animation: floatRotate 6s ease-in-out infinite;
+        animation-delay: 2s; 
+    }
+    .element-4 { 
+        top: 80%; left: 20%; 
+        animation: floatPulse 4.5s ease-in-out infinite;
+        animation-delay: 3s; 
+    }
+    .element-5 { 
+        top: 10%; left: 60%; 
+        animation: floatWave 5.5s ease-in-out infinite;
+        animation-delay: 4s; 
+    }
+    .element-6 { 
+        top: 70%; left: 40%; 
+        animation: floatGlow 6.5s ease-in-out infinite;
+        animation-delay: 5s; 
     }
 
     .banner-overlay {
-        background-color: rgba(0, 0, 0, 0.4);
+        background: rgba(0, 0, 0, 0.1);
         width: 100%;
         height: 100%;
         display: flex;
@@ -79,55 +133,226 @@
         z-index: 2;
     }
 
+    .banner-content {
+        max-width: 800px;
+        width: 100%;
+    }
+
+    .crown-decoration {
+        margin-bottom: 2rem;
+    }
+
+    .crown {
+        font-size: 4rem;
+        animation: crownPulse 2s ease-in-out infinite;
+        filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+    }
+
+    .name-container {
+        margin-bottom: 2rem;
+    }
+
     .banner-title {
-        font-size: var(--font-size-4xl);
-        margin-bottom: var(--spacing-md);
+        font-size: 4rem;
+        font-weight: 700;
+        margin: 0;
+        text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+        color: var(--color-text-light);
+    }
+
+    .celebration-text {
+        margin-bottom: 2rem;
+    }
+
+    .banner-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        font-style: italic;
+        color: var(--color-text-light);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .age-highlight {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+
+    .age-number {
+        font-size: 5rem;
+        font-weight: 900;
+        background: linear-gradient(45deg, #FFD700, #FF69B4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        animation: numberGlow 2s ease-in-out infinite alternate;
+    }
+
+    .age-text {
+        font-size: 2rem;
         font-weight: 300;
-        letter-spacing: 4px;
-        text-transform: uppercase;
-        opacity: 0;
-        transform: translateY(-50px);
-        animation: slideInFromTop 1.2s ease-out 0.5s forwards;
+        color: var(--color-text-light);
     }
 
-    .banner-names {
-        font-size: var(--font-size-3xl);
-        margin-bottom: var(--spacing-lg);
+    .banner-date-modern {
+        margin-bottom: 3rem;
+    }
+
+    .date-card {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 1.5rem 2rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .day {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--color-accent);
+    }
+
+    .month {
+        font-size: 1.2rem;
         font-weight: 600;
-        opacity: 0;
-        transform: translateX(-100px);
-        animation: slideInFromLeft 1.2s ease-out 1.2s forwards;
+        color: var(--color-text-light);
     }
 
-    .banner-date {
-        font-size: var(--font-size-xl);
-        letter-spacing: 2px;
-        border-top: 1px solid var(--color-text-light);
-        border-bottom: 1px solid var(--color-text-light);
-        padding: var(--spacing-sm) var(--spacing-lg);
-        opacity: 0;
-        transform: translateX(100px);
-        animation: slideInFromRight 1.2s ease-out 1.8s forwards;
+    .year {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: var(--color-text-light);
     }
 
-    @keyframes slideInFromTop {
-        to {
-            opacity: 1;
-            transform: translateY(0);
+    .banner-scroll-indicator {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        animation: scrollBounce 2.5s ease-in-out infinite;
+    }
+
+    .scroll-arrow {
+        width: 20px;
+        height: 20px;
+        border-right: 2px solid var(--color-text-light);
+        border-bottom: 2px solid var(--color-text-light);
+        transform: rotate(45deg);
+        transition: all 0.3s ease;
+    }
+
+    .banner-scroll-indicator span {
+        font-size: 0.9rem;
+        color: var(--color-text-light);
+        opacity: 0.8;
+    }
+
+    /* Animaciones suaves para emojis flotantes */
+    @keyframes floatSoft {
+        0%, 100% { transform: translateY(0px) scale(1); }
+        50% { transform: translateY(-15px) scale(1.05); }
+    }
+
+    @keyframes floatBounce {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        25% { transform: translateY(-10px) rotate(5deg); }
+        50% { transform: translateY(-20px) rotate(0deg); }
+        75% { transform: translateY(-10px) rotate(-5deg); }
+    }
+
+    @keyframes floatRotate {
+        0% { transform: translateY(0px) rotate(0deg) scale(1); }
+        25% { transform: translateY(-8px) rotate(90deg) scale(1.1); }
+        50% { transform: translateY(-15px) rotate(180deg) scale(1); }
+        75% { transform: translateY(-8px) rotate(270deg) scale(1.1); }
+        100% { transform: translateY(0px) rotate(360deg) scale(1); }
+    }
+
+    @keyframes floatPulse {
+        0%, 100% { transform: translateY(0px) scale(1); opacity: 0.8; }
+        50% { transform: translateY(-12px) scale(1.2); opacity: 1; }
+    }
+
+    @keyframes floatWave {
+        0% { transform: translateY(0px) translateX(0px); }
+        25% { transform: translateY(-10px) translateX(5px); }
+        50% { transform: translateY(-20px) translateX(0px); }
+        75% { transform: translateY(-10px) translateX(-5px); }
+        100% { transform: translateY(0px) translateX(0px); }
+    }
+
+    @keyframes floatGlow {
+        0%, 100% { 
+            transform: translateY(0px) scale(1); 
+            filter: drop-shadow(0 0 5px rgba(255, 182, 193, 0.5));
+        }
+        50% { 
+            transform: translateY(-18px) scale(1.1); 
+            filter: drop-shadow(0 0 15px rgba(255, 182, 193, 0.8));
         }
     }
 
-    @keyframes slideInFromLeft {
+    /* Animación mejorada para la flecha de scroll */
+    @keyframes scrollBounce {
+        0%, 100% { transform: translateY(0px); opacity: 0.7; }
+        25% { transform: translateY(-8px); opacity: 1; }
+        50% { transform: translateY(-15px); opacity: 0.8; }
+        75% { transform: translateY(-8px); opacity: 1; }
+    }
+
+    @keyframes crownPulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+    }
+
+
+
+    @keyframes numberGlow {
+        0% { text-shadow: 0 0 30px rgba(255, 215, 0, 0.5); }
+        100% { text-shadow: 0 0 50px rgba(255, 215, 0, 0.8), 0 0 70px rgba(255, 105, 180, 0.6); }
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-10px); }
+        60% { transform: translateY(-5px); }
+    }
+
+    @keyframes fadeInScale {
         to {
             opacity: 1;
-            transform: translateX(0);
+            transform: scale(1);
         }
     }
 
-    @keyframes slideInFromRight {
+    @keyframes fadeIn {
         to {
             opacity: 1;
-            transform: translateX(0);
+        }
+    }
+
+    @keyframes sparkleFloat {
+        0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+            transform: translateY(-20px) rotate(180deg);
+        }
+    }
+
+    @keyframes crownBounce {
+        0%, 100% {
+            transform: translateY(0px) scale(1);
+        }
+        50% {
+            transform: translateY(-10px) scale(1.1);
         }
     }
 

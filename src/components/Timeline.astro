@@ -1,0 +1,230 @@
+---
+// Timeline.astro
+---
+
+<section class="timeline-section">
+    <div class="container">
+        <h2 class="section-title animate-on-scroll">Cronograma del Día</h2>
+        <p class="timeline-description animate-fade-in">¡Aquí tienes todos los momentos especiales que viviremos juntos!</p>
+        
+        <div class="timeline">
+            <div class="timeline-item animate-slide-left">
+                <div class="timeline-time">16:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">🎉</div>
+                    <h3>Recepción y Bienvenida</h3>
+                    <p>Llegada de invitados y cóctel de bienvenida</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item animate-slide-right">
+                <div class="timeline-time">17:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">👑</div>
+                    <h3>Ceremonia de los 15</h3>
+                    <p>Momento especial con la corona y el vals tradicional</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item animate-slide-left">
+                <div class="timeline-time">18:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">📸</div>
+                    <h3>Sesión de Fotos</h3>
+                    <p>Fotos familiares y con amigos en el photobooth</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item animate-slide-right">
+                <div class="timeline-time">19:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">🍽️</div>
+                    <h3>Cena Especial</h3>
+                    <p>Deliciosa cena con menú especialmente seleccionado</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item animate-slide-left">
+                <div class="timeline-time">20:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">🎵</div>
+                    <h3>¡Fiesta y Baile!</h3>
+                    <p>La pista se abre para bailar toda la noche</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item animate-slide-right">
+                <div class="timeline-time">23:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">🎂</div>
+                    <h3>Torta y Brindis</h3>
+                    <p>Momento especial para soplar las velas y brindar</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .timeline-section {
+        padding: var(--spacing-2xl) 0;
+        background: linear-gradient(135deg, 
+            rgba(255, 182, 193, 0.1) 0%, 
+            rgba(221, 160, 221, 0.1) 50%, 
+            rgba(255, 215, 0, 0.1) 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .timeline-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: 
+            radial-gradient(circle at 20% 20%, rgba(255, 182, 193, 0.3) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(221, 160, 221, 0.3) 0%, transparent 50%),
+            radial-gradient(circle at 40% 60%, rgba(255, 215, 0, 0.2) 0%, transparent 50%);
+        pointer-events: none;
+    }
+
+    .timeline-description {
+        text-align: center;
+        font-size: var(--font-size-lg);
+        color: var(--color-text-medium);
+        margin-bottom: var(--spacing-2xl);
+        font-style: italic;
+    }
+
+    .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .timeline::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(to bottom, 
+            var(--color-primary), 
+            var(--color-secondary), 
+            var(--color-accent));
+        transform: translateX(-50%);
+        border-radius: 2px;
+        box-shadow: 0 0 20px rgba(255, 182, 193, 0.5);
+    }
+
+    .timeline-item {
+        position: relative;
+        margin-bottom: var(--spacing-xl);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-lg);
+    }
+
+    .timeline-item:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+    .timeline-time {
+        flex: 0 0 100px;
+        text-align: center;
+        font-size: var(--font-size-xl);
+        font-weight: 700;
+        color: var(--color-primary);
+        background: rgba(255, 255, 255, 0.9);
+        padding: var(--spacing-sm);
+        border-radius: var(--border-radius-lg);
+        border: 3px solid var(--color-primary);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 2;
+    }
+
+    .timeline-content {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.95);
+        padding: var(--spacing-lg);
+        border-radius: var(--border-radius-lg);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        border: 2px solid rgba(255, 182, 193, 0.3);
+        position: relative;
+        backdrop-filter: blur(10px);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .timeline-content:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .timeline-icon {
+        font-size: 2.5rem;
+        margin-bottom: var(--spacing-sm);
+        text-align: center;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    }
+
+    .timeline-content h3 {
+        font-size: var(--font-size-xl);
+        font-weight: 600;
+        color: var(--color-text-dark);
+        margin-bottom: var(--spacing-sm);
+        text-align: center;
+    }
+
+    .timeline-content p {
+        color: var(--color-text-medium);
+        text-align: center;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* Conectores para los elementos */
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 20px;
+        height: 20px;
+        background: var(--color-accent);
+        border: 4px solid white;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .timeline::before {
+            left: 30px;
+        }
+
+        .timeline-item {
+            flex-direction: column !important;
+            align-items: flex-start;
+            padding-left: 60px;
+        }
+
+        .timeline-item::before {
+            left: 30px;
+        }
+
+        .timeline-time {
+            flex: none;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .timeline-content {
+            width: 100%;
+        }
+    }
+</style>
