@@ -1,8 +1,8 @@
 import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 
-// Cargar variables de entorno
-dotenv.config();
+// // Cargar variables de entorno
+// dotenv.config();
 
 export async function POST({ request }) {
   try {
